@@ -1,0 +1,104 @@
+{% extends "bio_core_website/base.html" %}
+{%load static%}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'bio_core_website/css/KATE.css' %}?v=1">
+{% endblock %}
+{% block content %}
+<div class="container mt-8">
+    <div class="row g-4">
+        <!-- Левая колонка: аватар и профиль -->
+        <div class="col-md-4">
+            <div class="card bg-dark text-white text-center p-3">
+                <div class="mb-3">
+                    {% if user.avatar %}
+                        <img src="{{ user.avatar.url }}" 
+                             class="img-fluid rounded-circle"
+                             width="150" height="150"
+                             alt="Аватар пользователя {{ user.username }}"
+                             style="object-fit: cover;">
+                    {% else %}
+                        <img src="/media/avatars/default.jpg"
+                             class="img-fluid rounded-circle"
+                             width="150" height="150"
+                             alt="Аватар по умолчанию"
+                             style="object-fit: cover;">
+                    {% endif %}
+                </div>
+                <h4>{{ user.get_full_name }}</h4>
+                <p class="text-muted">@{{ user.username }}</p>
+                <a href="{% url 'bio_core_website:edit_profile' %}" 
+                   class="btn btn-outline-light mt-2">
+                    Редактировать профиль
+                </a>
+            </div>
+        </div>
+
+        <!-- Правая колонка: данные и ИМТ -->
+        <div class="col-md-8">
+            <div class="card bg-dark text-white">
+                <div class="card-header border-secondary">
+                    <h4>Информация о профиле</h4>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>Имя пользователя:</strong> {{ user.username }}</p>
+                            <p><strong>Email:</strong> {{ user.email|default:"Не указан" }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Пол:</strong> {{ user.get_gender_display|default:"Не указан" }}</p>
+                            <p><strong>Возраст:</strong> {{ user.age|default:"Не указан" }}</p>
+                            <p><strong>Вес:</strong> {{ user.weight|default:"Не указан" }} кг</p>
+                            <p><strong>Рост:</strong> {{ user.height|default:"Не указан" }} см</p>
+                        </div>
+                    </div>
+
+                    <!-- Блок ИМТ -->
+                    {% if bmi_data %}
+                        <div class="card bg-secondary mt-4 text-dark">
+                            <div class="card-header">
+                                <h5>Индекс массы тела (ИМТ)</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h4>{{ bmi_data.value }} — {{ bmi_data.category }}</h4>
+                                        <div class="progress mt-3" style="height: 25px;">
+                                            <div class="progress-bar 
+                                                {% if bmi_data.value < 18.5 %}bg-info
+                                                {% elif bmi_data.value < 25 %}bg-success
+                                                {% elif bmi_data.value < 30 %}bg-warning
+                                                {% else %}bg-danger{% endif %}" 
+                                                role="progressbar" 
+                                                style="width: {% widthratio bmi_data.value 40 100 %}%"
+                                                aria-valuenow="{{ bmi_data.value }}" 
+                                                aria-valuemin="15" 
+                                                aria-valuemax="40">
+                                            </div>
+                                        </div>
+                                        <div class="mt-2 d-flex justify-content-between small">
+                                            <span>15</span>
+                                            <span>18.5</span>
+                                            <span>25</span>
+                                            <span>30</span>
+                                            <span>40+</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    <a href="{% url 'bio_core_website:consultation_history' %}" class="btn btn-outline-light mt-3">История консультаций</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Chart.js можно оставить, если используется -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+<script>
+    // График ИМТ
+    const bmiCtx = document.getElementById('bmiChart');
+</script>
+{% endblock %}

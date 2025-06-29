@@ -1,0 +1,27 @@
+{% extends "bio_core_website/base.html" %}
+{%load static%}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'bio_core_website/css/DI.css' %}">
+{% endblock %}
+{% load static %}
+
+{% block content %}
+<div class="container_register mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6_register">
+            <div class="card_register">
+                <div class="card-header_register">
+                    <h3 class="text-center_register">Регистрация</h3>
+                </div>
+                <div class="card-body_register">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-primary w-100">Зарегистрироваться</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

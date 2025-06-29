@@ -1,0 +1,744 @@
+/* О нас */
+/* Основные стили страницы "О компании" */
+.container_about {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    color: #fff;
+    font-family: 'TT Travels Next Trl', sans-serif;
+    background-color: #000;
+}
+
+.container_about h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    color: #c2a98c;
+    text-align: center;
+    letter-spacing: 1px;
+    position: relative;
+}
+.h1{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    right: 25%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #c2a98c, transparent);
+}
+.container_about h1:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    right: 25%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #c2a98c, transparent);
+}
+
+/* Стили для видео-контейнера */
+.video-container {
+    margin: 60px 0;
+    position: relative;
+}
+
+.video-container video {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(194, 169, 140, 0.3);
+}
+
+/* Стили для нумерованных блоков (как в прототипе) */
+.process-steps {
+    margin: 60px 0;
+}
+
+.step-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 40px;
+}
+
+.step-number {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #c2a98c;
+    margin-right: 25px;
+    line-height: 1;
+    min-width: 60px;
+}
+
+.step-content {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    padding-top: 10px;
+    border-left: 2px solid #c2a98c;
+    padding-left: 20px;
+}
+
+/* Стили для блоков с контентом */
+.content-block {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+    margin-top: 50px;
+}
+
+.our_mission,
+.our_value {
+    flex: 1;
+    min-width: 300px;
+}
+
+.our_mission h2,
+.our_value h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: #c2a98c;
+    text-transform: uppercase;
+    border-bottom: 2px solid #c2a98c;
+    padding-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.our_mission p {
+    margin-bottom: 20px;
+    line-height: 1.7;
+    font-size: 1.1rem;
+}
+
+.our_mission strong {
+    color: #c2a98c;
+    font-weight: 600;
+}
+
+/* Стили для выделенного текста */
+.card-text {
+    position: relative;
+    padding: 25px;
+    background-color: rgba(194, 169, 140, 0.1);
+    border-left: 4px solid #c2a98c;
+    font-style: italic;
+    margin: 30px 0;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #f5f5f5;
+}
+
+.card-text::before {
+    content: "“";
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    color: #c2a98c;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.card-text::after {
+    content: "”";
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+    color: #c2a98c;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Стили для списка ценностей */
+.values-list {
+    list-style-type: none;
+    padding-left: 0;
+    margin-top: 30px;
+}
+
+.values-list li {
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+.values-list li:before {
+    content: ">";
+    color: #c2a98c;
+    font-size: 1.5rem;
+    position: absolute;
+    left: 0;
+    top: -5px;
+}
+
+/* Разделительная линия */
+.section-divider {
+    border: none;
+    height: 1px;
+    background-color: #c2a98c;
+    margin: 60px 0;
+    opacity: 0.3;
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 768px) {
+    .container_about {
+        padding: 30px 15px;
+    }
+
+    .container_about h1 {
+        font-size: 2rem;
+    }
+
+    .content-block {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .step-item {
+        flex-direction: column;
+    }
+
+    .step-number {
+        margin-bottom: 10px;
+    }
+
+    .step-content {
+        border-left: none;
+        padding-left: 0;
+        padding-top: 0;
+    }
+
+    .card-text {
+        padding: 20px 15px;
+    }
+}
+
+/* РЕГИСТРАЦИЯ */
+/* Основные стили контейнера регистрации */
+.container_register {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 0;
+}
+
+/* Стили карточки регистрации */
+.card_register {
+    background-color: #000;
+    border: 1px solid #c2a98c;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.card-header_register {
+    background-color: transparent;
+    padding: 25px 20px 0;
+    border-bottom: none;
+}
+
+.text-center_register {
+    color: #c2a98c;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 0;
+    position: relative;
+}
+
+.text-center_register:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    right: 25%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #c2a98c, transparent);
+}
+
+/* Стили тела формы */
+.card-body_register {
+    padding: 20px;
+}
+
+/* Стили для формы и её элементов */
+.card-body_register form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.card-body_register p {
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-body_register label {
+    color: #c2a98c;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    order: -1;
+}
+
+.card-body_register input:not([type="checkbox"]):not([type="radio"]),
+.card-body_register select {
+    background-color: #111;
+    border: 1px solid #333;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 4px;
+    font-family: 'TT Travels Next Trl', sans-serif;
+}
+
+.card-body_register input:focus {
+    border-color: #c2a98c;
+    outline: none;
+}
+
+/* Стили для чекбоксов и радио-кнопок */
+.card-body_register input[type="checkbox"],
+.card-body_register input[type="radio"] {
+    margin-right: 8px;
+    accent-color: #c2a98c;
+}
+
+/* Стили для кнопки отправки */
+.card-body_register .btn-primary {
+    background-color: #c2a98c;
+    color: #000;
+    border: none;
+    padding: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-top: 10px;
+    font-family: 'TT Travels Next Trl', sans-serif;
+    letter-spacing: 0.5px;
+}
+
+/* Стили для ошибок валидации */
+.card-body_register .errorlist {
+    color: #881a1a;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    list-style: none;
+    padding-left: 0;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 576px) {
+    .container_register {
+        padding: 0 15px;
+    }
+
+    .card_register {
+        border-radius: 6px;
+    }
+
+    .text-center_register {
+        font-size: 1.5rem;
+    }
+}
+
+/* ВХОД */
+/* Основные стили формы входа */
+.login-container {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #000;
+    border: 1px solid #c2a98c;
+    border-radius: 8px;
+    color: #fff;
+    font-family: 'TT Travels Next Trl', sans-serif;
+}
+
+/* Заголовок формы */
+.login-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #c2a98c;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.login-title:after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: #c2a98c;
+    margin: 15px auto 0;
+}
+
+/* Стили формы */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-form p {
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form label {
+    color: #c2a98c;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    background-color: #111;
+    border: 1px solid #333;
+    color: #fff;
+    padding: 12px 15px;
+    border-radius: 4px;
+    font-family: 'TT Travels Next Trl', sans-serif;
+}
+
+.login-form input:focus {
+    border-color: #c2a98c;
+    outline: none;
+}
+
+/* Кнопка входа */
+.login-form button[name="submit"] {
+    background-color: #c2a98c;
+    color: #000;
+    border: none;
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-family: 'TT Travels Next Trl', sans-serif;
+    transition: background-color 0.3s;
+}
+
+.login-form button[name="submit"]:hover {
+    background-color: #d4b796;
+}
+
+/* Сообщение об ошибке */
+.login-error {
+    color: #ff6b6b;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 576px) {
+    .login-container {
+        padding: 20px 15px;
+        margin: 20px auto;
+    }
+
+    .login-title {
+        font-size: 1.5rem;
+    }
+}
+
+/* История консультации */
+/* Основные стили контейнера */
+.container.mt-5_history {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    color: #fff;
+    font-family: 'TT Travels Next Trl', sans-serif;
+}
+
+/* Скрываем верхний пустой блок */
+#vitaminChart {
+    display: none;
+}
+
+/* Заголовок страницы */
+.container.mt-5_history h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #c2a98c;
+    text-transform: uppercase;
+    position: relative;
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.container.mt-5_history h2:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    right: 25%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #c2a98c, transparent);
+}
+
+/* Общий контейнер для всех элементов */
+.row_history {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    background-color: #BB997A;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+/* Блок с графиками */
+.col-md-8_history {
+    flex: 2;
+    min-width: 300px;
+}
+
+/* Блок со списком консультаций */
+.col-md-4 {
+    flex: 1;
+    min-width: 250px;
+}
+
+/* Стили для карточек с графиками */
+.card.mb-4 {
+    background-color: #ffffff;
+    box-shadow: 0 12px 15px rgba(92, 86, 78, 0.2);
+    border-radius: 6px;
+    margin-bottom: 20px !important;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.card-body h5 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+/* Стили списка консультаций */
+.list-group_history {
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.list-group-item {
+    display: flex;
+    background-color: #ffffff;
+    border: 1px solid #333;
+    color: #000000;
+    padding: 12px 15px;
+    margin-bottom: -1px;
+    cursor: pointer;
+    max-width: 300px;
+
+}
+
+.list-group-item-action:hover {
+    background-color: rgba(194, 169, 140, 0.2);
+
+}
+
+.list-group-item:first-child {
+    border-top-left-radius: 6px !important;
+    border-top-right-radius: 6px !important;
+}
+
+.list-group-item:last-child {
+    border-bottom-left-radius: 6px !important;
+    border-bottom-right-radius: 6px !important;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .container.mt-5_history {
+        padding: 0 15px;
+    }
+
+    .row_history {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .container.mt-5_history h2 {
+        font-size: 1.5rem;
+    }
+
+    .list-group-item {
+        padding: 10px 15px;
+    }
+}
+
+/* Рузультаты */
+/* Основные стили контейнера */
+.container.mt-5_result {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+    color: #fff;
+    font-family: 'TT Travels Next Trl', sans-serif;
+}
+
+/* Заголовок страницы */
+.container.mt-5_result h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #c2a98c;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 15px;
+    text-align: center;
+}
+
+.container.mt-5_result h2:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    right: 25%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #c2a98c, transparent);
+}
+
+/* Стили для алертов */
+.alert {
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    border: 1px solid;
+}
+
+.alert-warning_result {
+    background-color: rgba(194, 169, 140, 0.1);
+    border-color: #c2a98c;
+    color: #fff;
+}
+
+.alert-warning_result h4 {
+    color: #c2a98c;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.alert-danger_result {
+    background-color: rgba(255, 99, 132, 0.1);
+    border-color: #ff6384;
+    color: #fff;
+}
+
+.alert-danger_result h4 {
+    color: #ff6384;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.alert-success_result {
+    background-color: rgba(75, 192, 192, 0.1);
+    border-color: #4bc0c0;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+/* Стили для списков */
+.alert ul {
+    padding-left: 20px;
+    margin-bottom: 0;
+}
+
+.alert li {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.alert li:last-child {
+    margin-bottom: 0;
+}
+
+/* Стили для ссылок */
+.alert-warning_result a {
+    color: #c2a98c !important;
+    font-weight: 600 !important;
+    transition: color 0.2s;
+}
+
+.alert-warning_result a:hover {
+    color: #d4b796 !important;
+    text-decoration: none !important;
+}
+
+/* Стили для иконки предупреждения */
+.fa-exclamation-triangle_result {
+    color: #ff6384;
+    margin-right: 5px;
+}
+
+/* Стили для блока кнопок */
+.button_res {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.bt_prof_consult_result {
+    background-color: #c2a98c;
+    color: #000;
+    border: none;
+    padding: 12px 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.2s;
+    text-align: center;
+    flex: 1;
+    min-width: 200px;
+}
+
+.bt_prof_consult_result:hover {
+    background-color: #d4b796;
+    color: #000;
+    text-decoration: none;
+}
+
+/* Адаптация для мобильных */
+@media (max-width: 768px) {
+    .container.mt-5_result {
+        padding: 0 15px;
+    }
+
+    .container.mt-5_result h2 {
+        font-size: 1.5rem;
+    }
+
+    .button_res {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .bt_prof_consult_result {
+        width: 100%;
+    }
+}

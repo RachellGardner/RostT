@@ -1,0 +1,68 @@
+{% extends "bio_core_website/base.html" %}
+
+{% block title %}Главная страница | BioCore{% endblock %}
+{%load static%}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'bio_core_website/css/style.css' %}">
+{% endblock %}
+{% block content %}
+<!-- Hero Section -->
+<div class="container mt-4 hero-section">
+    <div class="hero-section-text">
+        <h2 class="hero-section_h1" style="font-size: 150px; font-weight: bold; color:white;">BIO<br>CORE</h2>
+    </div>
+    <div class="hero-section-image">
+        <img src="{% static 'bio_core_website/img/img6.png' %}" alt="Pills Image" class="img-fluid rounded">
+    </div>
+</div>
+
+
+<!-- CTA Section -->
+<div class="container mt-4 cta-section">
+    <div class="row">
+        <div class="col-md-6 cta-section-text">
+            <h2 style="color: rgb(0, 0, 0);font-weight: 500;">УЗНАЙ -<br>КАКИХ ЭЛЕМЕНТОВ ТЕБЕ НЕ ХВАТАЕТ</h2>
+            <button class="cta-button"><a  style="text-decoration: none; color: rgb(255, 255, 255); " href="{% url 'bio_core_website:consultation' %}" class="btn-primary">
+                    Новая консультация
+                </a>
+            </button>
+        </div>
+        <div class="col-md-6">
+            <img src="{% static 'bio_core_website/img/img1.png' %}" alt="Pills Image" class="img-fluid rounded">
+        </div>
+    </div>
+</div>
+
+<!-- Products Section -->
+<div class="container mt-4 products-section">
+    <h2 class="text_title_b">БАДЫ</h2>
+    <div class="row justify-content-center">
+        {% for category in categories %}
+        <div class="product-card-container">
+            <a href="{% url 'bio_core_website:category_elements' category.id %}" class="product-card">
+                <img src="{{ category.image.url }}" alt="{{ category.name }}">
+                <h5 class="card-title">{{ category.name }}</h5>
+            </a>
+        </div>
+        {% endfor %}
+        <!-- <div class="col-md-6 product-card">
+            <img src="/static/images/vitamins_image.jpg" alt="Vitamins Image" class="img-fluid mb-3">
+            <h3>ВИТАМИНЫ</h3>
+        </div>
+        <div class="col-md-6 product-card">
+            <img src="/static/images/amino_acids_image.jpg" alt="Amino Acids Image" class="img-fluid mb-3">
+            <h3>АМИНОКИСЛОТЫ</h3>
+        </div> -->
+    </div>
+</div>
+
+<!-- <div class="row">
+    <div class="col-md-8">
+        <h1 class="mb-4">Категории элементов</h1>
+        <div class="row">
+
+        </div> -->
+</div>
+
+</div>
+{% endblock %}

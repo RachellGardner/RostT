@@ -1,0 +1,29 @@
+{% extends 'bio_core_website/base.html' %}
+{%load static%}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'bio_core_website/css/KATE.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Консультация по витаминам</h2>
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+        {% if not field.name == 'notes' %}
+        <div class="mb-3">
+            <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+            {{ field }}
+        </div>
+        {% endif %}
+        {% endfor %}
+
+        <div class="mb-3">
+            <label for="{{ form.notes.id_for_label }}" class="form-label">{{ form.notes.label }}</label>
+            {{ form.notes }}
+        </div>
+
+        <button type="submit" class="send">Отправить</button>
+    </form>
+</div>
+{% endblock %}

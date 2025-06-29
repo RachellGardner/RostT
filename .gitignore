@@ -1,0 +1,40 @@
+# Виртуальное окружение
+venv/
+env/
+*.env
+*.venv
+
+# Персональные настройки окружения и переменные
+.env
+*.env.*
+
+# Временные файлы Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Временные, резервные файлы
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+*.~ 
+
+# Настройки редакторов
+.vscode/
+.idea/
+
+# Системные файлы macOS
+.DS_Store
+
+
+# Файлы тестов/отчётов
+htmlcov/
+coverage.xml
+*.cover
+*.coverage
+.pytest_cache/
+

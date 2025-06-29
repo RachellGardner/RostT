@@ -1,0 +1,41 @@
+{% extends 'bio_core_website/base.html' %}
+{%load static%}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'bio_core_website/css/KATE.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Поиск элементов</h2>
+    <form method="get" action="{% url 'bio_core_website:search' %}">
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Искать</button>
+    </form>
+
+    {% if query %}
+        <h3 class="mt-4">Результаты поиска для "{{ query }}"</h3>
+        
+        {% if results %}
+            <div class="row">
+                {% for element in results %}
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            {% if element.image %}
+                                <img src="{{ element.image.url }}" class="card-img-top" alt="{{ element.name }}">
+                            {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title">{{ element.name }}</h5>
+                                <p class="card-text">{{ element.category.name }}</p>
+                                <a href="{% url 'bio_core_website:element_detail' element.id %}" class="btn btn-primary">Подробнее</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="alert alert-warning mt-4">
+                Элементы по запросу "{{ query }}" не найдены.
+            </div>
+        {% endif %}
+    {% endif %}
+</div>
+{% endblock %}

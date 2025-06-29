@@ -1,0 +1,59 @@
+{% extends 'bio_core_website/base.html' %}
+{%load static%}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'bio_core_website/css/DI.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container mt-5_result">
+    <h2>Результаты консультации</h2>
+
+    {% if elements %}
+    <div class="alert alert-warning_result">
+        <h4>У вас низкий уровень следующих элементов:</h4>
+        <ul>
+            {% for element in elements %}
+            <li>
+                <a style="text-decoration: none; color: rgb(0, 0, 0); font-weight: bolder"
+                    href="{% url 'bio_core_website:element_detail' pk=element.id %}">
+                    {{ element.name }}
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    {% if excess_vitamins %}
+    <div class="alert alert-danger_result">
+        <h4>Внимание! Повышенный уровень:</h4>
+        <ul>
+            {% for item in excess_vitamins %}
+            <li>
+                <strong>{{ item.vitamin.name }}</strong>:
+                {{ item.value|floatformat:2 }} {{ item.vitamin.unit }}
+                (норма до {{ item.vitamin.max_normal }})
+                <div class="text-danger mt-1">
+                    <i class="fas fa-exclamation-triangle_result"></i> {{ item.message }}
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+
+    {% if not elements and not excess_vitamins %}
+    <div class="alert alert-success_result">
+        У вас нормальный уровень всех витаминов и элементов!
+    </div>
+    {% endif %}
+
+    <div class="button_res">
+        <a href="{% url 'bio_core_website:consultation_history' %}" class="bt_prof_consult_result">
+            Посмотреть историю консультаций
+        </a>
+        <a href="{% url 'bio_core_website:profile' %}" class="bt_prof_consult_result">
+            Перейти в профиль
+        </a>
+    </div>
+</div>
+{% endblock %}

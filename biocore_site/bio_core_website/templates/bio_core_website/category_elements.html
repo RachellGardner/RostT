@@ -1,0 +1,50 @@
+{% extends "bio_core_website/base.html" %}
+{%load static%}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'bio_core_website/css/style.css' %}">
+{% endblock %}
+{% block title %}{{ category.name }} | BioCore{% endblock %}
+
+{% block content %}
+<div class="catalog_1">
+    <h1  style=" color:#c2a98c;">{{ category.name }}</h1>
+    
+    
+    
+    <a href="{% url 'bio_core_website:home' %}" class="btn btn-outline-secondary">
+        Назад к категориям
+    </a>
+</div>
+
+<div class="row">
+    {% for element in elements %}
+    <div class="col-md-4 mb-4">
+        <div class="card h-100">
+            {% if element.image %}
+            <img src="{{ element.image.url }}" class="card-img-top" alt="{{ element.name }}" style="height: 200px; object-fit: cover;">
+            {% else %}
+            <div class="bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                <span class="text-muted">No image available</span>
+            </div>
+            {% endif %}
+            <div class="card-body_catalog">
+                <h5 class="card-title_cataloge">{{ element.name }}</h5>
+                <p class="card-text_catalog">{{ element.description|truncatechars:100 }}</p>
+                {% if element.manufacturer %}
+                <p class="text-muted">Производитель: {{ element.manufacturer.name }}</p>
+                {% endif %}
+            </div>
+            <div class="card-footer_catalog bg-transparent">
+                <a  style="text-decoration:none; color:white;" href="{% url 'bio_core_website:element_detail' element.id %}" class=" btn-primary_catalog">
+                    Подробнее
+                </a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12">
+        <div class="alert alert-info">В этой категории пока нет элементов</div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

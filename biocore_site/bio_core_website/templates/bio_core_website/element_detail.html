@@ -1,0 +1,65 @@
+{% extends "bio_core_website/base.html" %}
+{%load static%}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'bio_core_website/css/style.css' %}">
+{% endblock %}
+{% block title %}{{ element.name }} | BioCore{% endblock %}
+
+{% block content %}
+<div class="row_detail">
+    <div class="col-md-4">
+        {% if element.image %}
+        <img src="{{ element.image.url }}" class="img-fluid_1 rounded mb-3" alt="{{ element.name }}">
+        {% endif %}
+        
+        <div class="card mb-3">
+            <div class="card-header">
+                <h5>Информация</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <strong>Категория:</strong> {{ element.category.name }}
+                </li>
+                {% if element.manufacturers.all %}
+                <li class="list-group-item">
+                    <strong>Производитель{% if element.manufacturers.count > 1 %}и{% endif %}:</strong>
+                    {% for manufacturer in element.manufacturers.all %}
+                        <a href="{{ manufacturer.website }}" class="text-decoration-none">
+            {{ manufacturer.name }}
+        </a>
+                        {% if manufacturer.country %}
+                            ({{ manufacturer.country }})
+                        {% endif %}
+                        {% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    
+    <div class="col-md-8">
+        <h1>{{ element.name }}</h1>
+        
+        <div class="card mb-3">
+            <div class="card-header">
+                <h5>Описание</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{ element.description }}</p>
+            </div>
+        </div>
+        
+        {% if element.usage %}
+        <div class="card">
+            <div class="card-header">
+                <h5>Способ применения</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{ element.usage }}</p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,113 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}BioCore{% endblock %}</title>
+  <!-- Bootstrap first -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Then your custom CSS -->
+  <link rel="stylesheet" href="{% static 'bio_core_website/css/style.css' %}">
+  <!-- Block for additional CSS -->
+  {% block extra_css %}{% endblock %}
+</head>
+
+<body>
+    <!-- Header -->
+    <header class=" py-3">
+        <div class="container">
+            <!-- Logo -->
+            <div class="logo">
+                <img src="{% static 'bio_core_website/img/logo.png' %}" alt="BioCore Logo">
+                <a class="text-white fs-4" href="{% url 'bio_core_website:home' %}">BioCore</a>
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+
+
+                <!-- Navigation -->
+                <nav class="navbar navbar-expand-lg navbar-dark">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item"><a class="nav-link" href="{% url 'bio_core_website:consultation' %}">КОНСУЛЬТАЦИЯ</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'bio_core_website:about' %}">О НАС</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'bio_core_website:search' %}">ПОИСК</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'bio_core_website:catalog' %}">КАТАЛОГ</a></li>
+                        </ul>
+                        {% if user.is_authenticated %}
+                        <a href="{% url 'bio_core_website:profile' %}">
+                            {% if user.avatar %}
+                            <img src="{{ user.avatar.url }}" class="img-thumbnail rounded-circle shadow" width="60"
+                                height="60" alt="Текущий аватар" style="object-fit: cover;">
+                            {% else %}
+                            <img src="/media/avatars/default.jpg" class="img-thumbnail rounded-circle shadow" width="60"
+                                height="60" alt="Аватар по умолчанию" style="object-fit: cover;">
+                            {% endif %}
+                        </a>
+                        <form method="post" action="{% url 'users:logout' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="nav-link">Выйти</button>
+                        </form>
+                        {% else %}
+                        <a class="nav-link btn-login" href="{% url 'users:login' %}">Вход</a>
+                        <a class="nav-link btn-register" href="{% url 'users:register' %}">Регистрация</a>
+                        {% endif %}
+                    </div>
+                </nav>
+
+                <!-- User Authentication -->
+
+            </div>
+        </div>
+    </header>
+    <!-- Main Content -->
+    <div class="container mt-4">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer-section">
+        <div class="container">
+            <div class="row">
+                <!-- Information Section -->
+                <div class="col-md-4">
+                    <h5>ИНФОРМАЦИЯ</h5>
+                    <hr>
+                    <p><a href="#">Телефон поддержки</a></p>
+                </div>
+
+                <!-- Company Section -->
+                <div class="col-md-4">
+                    <h5>КОМПАНИЯ</h5>
+                    <hr>
+                    <p><a href="#">О проекте</a></p>
+                    <p><a href="#">Сотрудничество</a></p>
+                </div>
+
+                <!-- Social Icons -->
+                <div class="col-md-4 social-icons text-end">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <!-- Footer Logo -->
+            <div class="footer-logo mt-4">
+                <img src="{% static 'bio_core_website\img\logo.png' %}" alt="BioCore Footer Logo" class="me-2">
+                <span class="text-white fs-5">BioCore</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    {% block extra_js %}
+    <!-- подключение js -->
+    {% endblock %}
+</body>
+
+</html>

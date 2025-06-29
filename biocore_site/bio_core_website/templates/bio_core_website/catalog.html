@@ -1,0 +1,63 @@
+{% for category in categories %}
+<section class="category-section mb-5 p-4 bg-light rounded">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="category-title mb-0">
+            <a href="{% url 'bio_core_website:category_elements' category.id %}" 
+               class="text-decoration-none text-dark">
+                {{ category.name }}
+            </a>
+            <span class="badge bg-primary ms-2">{{ category.element_count }}</span>
+        </h2>
+        <a href="{% url 'bio_core_website:category_elements' category.id %}" 
+           class="btn btn-outline-primary">
+            Все элементы →
+        </a>
+    </div>
+    
+    {% if category.elements.all %}
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        {% for element in category.elements.all|slice:":6" %}
+        <div class="col">
+            <div class="card h-100">
+                {% if element.image %}
+                <img src="{{ element.image.url }}" class="card-img-top" alt="{{ element.name }}" style="height: 180px; object-fit: cover;">
+                {% else %}
+                <img src="{% static 'bio_core_website/images/placeholder.jpg' %}" class="card-img-top" alt="Нет изображения" style="height: 180px; object-fit: cover;">
+                {% endif %}
+                
+                <div class="card-body">
+                    <h5 class="card-title">{{ element.name }}</h5>
+                    
+                    {% if element.manufacturers.all %}
+                    <p class="text-muted small mb-2">
+                        <i class="bi bi-building"></i> 
+                        {% for manufacturer in element.manufacturers.all %}
+                        {{ manufacturer.name }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
+                    {% endif %}
+                    
+                    {% if element.description %}
+                    <p class="card-text text-truncate" style="max-height: 3.6em; overflow: hidden;">
+                        {{ element.description }}
+                    </p>
+                    {% endif %}
+                </div>
+                
+                <div class="card-footer bg-white border-top-0">
+                    <a href="{% url 'bio_core_website:element_detail' element.id %}" 
+                       class="btn btn-primary w-100">
+                        Подробнее
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="alert alert-info">В этой категории пока нет элементов</div>
+    {% endif %}
+</section>
+{% empty %}
+<div class="alert alert-warning">Каталог пуст. Пока нет ни одной категории.</div>
+{% endfor %}
