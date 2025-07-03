@@ -1,68 +1,124 @@
 {% extends "bio_core_website/base.html" %}
 
-{% block title %}Главная страница | BioCore{% endblock %}
+{% block title %}Главная страница | Ростполимерпром{% endblock %}
 {%load static%}
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'bio_core_website/css/style.css' %}">
 {% endblock %}
 {% block content %}
-<!-- Hero Section -->
-<div class="container mt-4 hero-section">
-    <div class="hero-section-text">
-        <h2 class="hero-section_h1" style="font-size: 150px; font-weight: bold; color:white;">BIO<br>CORE</h2>
-    </div>
-    <div class="hero-section-image">
-        <img src="{% static 'bio_core_website/img/img6.png' %}" alt="Pills Image" class="img-fluid rounded">
-    </div>
-</div>
+<!-- Шапка -->
 
 
-<!-- CTA Section -->
-<div class="container mt-4 cta-section">
-    <div class="row">
-        <div class="col-md-6 cta-section-text">
-            <h2 style="color: rgb(0, 0, 0);font-weight: 500;">УЗНАЙ -<br>КАКИХ ЭЛЕМЕНТОВ ТЕБЕ НЕ ХВАТАЕТ</h2>
-            <button class="cta-button"><a  style="text-decoration: none; color: rgb(255, 255, 255); " href="{% url 'bio_core_website:consultation' %}" class="btn-primary">
-                    Новая консультация
-                </a>
-            </button>
+<!-- Главный баннер -->
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <h1>ООО "РОСТПОЛИМЕРПРОМ"</h1>
+            <p>является крупнейшим производителем полимерно-композитных изделий в России.</p>
+            <button class="cta-button">ОСТАВИТЬ ЗАЯВКУ</button>
         </div>
-        <div class="col-md-6">
-            <img src="{% static 'bio_core_website/img/img1.png' %}" alt="Pills Image" class="img-fluid rounded">
+        <img src="{% static 'images/road.jpg' %}" alt="Дорога в лесу" class="hero-image">
+    </div>
+</section>
+
+<!-- Секция с продуктами -->
+<section class="products-section">
+    <div class="container">
+        <div class="product-card">
+            <img src="{% static 'bio_core_website/img/luk.png' %}" alt="Продукт 1">
+            <div class="product-info">
+                <h2>Канализационные люки</h2>
+                <p>Текст, который размещают внизу заголовка, чтобы раскрыть детали</p>
+                <button class="view-button">СМОТРЕТЬ</button>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="{% static 'images/product2.jpg' %}" alt="Продукт 2">
+            <div class="product-info">
+                <h2>Дождеприемники</h2>
+                <p>Текст, который размещают внизу заголовка, чтобы раскрыть детали</p>
+                <button class="view-button">СМОТРЕТЬ</button>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="{% static 'images/product3.jpg' %}" alt="Продукт 3">
+            <div class="product-info">
+                <h2>Смотровые колодцы</h2>
+                <p>Текст, который размещают внизу заголовка, чтобы раскрыть детали</p>
+                <button class="view-button">СМОТРЕТЬ</button>
+            </div>
+        </div>
+        <div class="product-card">
+            <img src="{% static 'images/product4.jpg' %}" alt="Продукт 4">
+            <div class="product-info">
+                <h2>Водоотводное лотки</h2>
+                <p>Текст, который размещают внизу заголовка, чтобы раскрыть детали</p>
+                <button class="view-button">СМОТРЕТЬ</button>
+            </div>
         </div>
     </div>
-</div>
+</section>
 
-<!-- Products Section -->
-<div class="container mt-4 products-section">
-    <h2 class="text_title_b">БАДЫ</h2>
-    <div class="row justify-content-center">
-        {% for category in categories %}
-        <div class="product-card-container">
-            <a href="{% url 'bio_core_website:category_elements' category.id %}" class="product-card">
-                <img src="{{ category.image.url }}" alt="{{ category.name }}">
-                <h5 class="card-title">{{ category.name }}</h5>
-            </a>
-        </div>
-        {% endfor %}
-        <!-- <div class="col-md-6 product-card">
-            <img src="/static/images/vitamins_image.jpg" alt="Vitamins Image" class="img-fluid mb-3">
-            <h3>ВИТАМИНЫ</h3>
-        </div>
-        <div class="col-md-6 product-card">
-            <img src="/static/images/amino_acids_image.jpg" alt="Amino Acids Image" class="img-fluid mb-3">
-            <h3>АМИНОКИСЛОТЫ</h3>
-        </div> -->
+<!-- Секция партнеров -->
+<section class="partners-section">
+    <div class="container">
+        
+        <img src="{% static 'bio_core_website/img/vashdom.png' %}" alt="Партнер 1">
+        <img src="{% static 'bio_core_website/img/vodokanal.png' %}" alt="Партнер 2">
+        <img src="{% static 'bio_core_website/img/rostelekom.png' %}" alt="Партнер 3">
+        <img src="{% static 'bio_core_website/img/santeh.png' %}"alt="Партнер 4">
+        <img src="{% static 'bio_core_website/img/santehk.png' %}"alt="Партнер 5">
     </div>
-</div>
+</section>
 
-<!-- <div class="row">
-    <div class="col-md-8">
-        <h1 class="mb-4">Категории элементов</h1>
-        <div class="row">
+<!-- О компании -->
+<section class="about-us-section">
+    <div class="container">
+        <h2>О компании</h2>
+        <p>Мы предлагаем широкий ассортимент люков: по цвету, размеру и нагрузке. Возможно нанесение логотипа. Мощности производственной базы позволяют выполнить заказ в любом объеме в кратчайшие сроки. Двойной контроль качества готовых изделий. Гибкая ценовая политика: крупные скидки – крупным клиентам.</p>
+        <p>Полимерно-композитные люки – это новейшая разработка, отвечающая требованиям современной промышленности, которые созданы как альтернатива чугунным. Превосходят требования ГОСТ 3634-99 по прочности. Вся продукция сертифицирована.</p>
+        <p>АССОРТИМЕНТ ПРОДУКЦИИ:</p>
+        <ul>
+            <li>канализационные люки;</li>
+            <li>смотровые колодцы;</li>
+            <li>дождеприемники;</li>
+            <li>водоотводные лотки;</li>
+            <li>тротуарная плитка;</li>
+            <li>черепица.</li>
+        </ul>
+    </div>
+</section>
 
-        </div> -->
-</div>
+<!-- Полезная информация -->
+<section class="useful-info-section">
+    <div class="container">
+        <h2>Полезная информация</h2>
+        <div class="info-grid">
+            <div class="info-item">
+                <img src="{% static 'images/photo-placeholder.jpg' %}" alt="Фото">
+                <p>ФОТО</p>
+            </div>
+            <div class="info-item">
+                <h3>01</h3>
+                <p>Легкий люк ЛМ (А15). К этой категории относятся люки с самым небольшим классом нагрузки. Область применения этих люков ограничена тротуарами, газонами и другими территориями, не предназначенными для проезда транспорта. Канализационные люки данного типа идеальны для использования на колодцах под дождевую канализацию, на территориях частных домов и приусадебных участках, в городских парках, скверах и зон зеленых насаждений.</p>
+            </div>
+            <div class="info-item">
+                <h3>02</h3>
+                <p>Люк средний С (В15) предназначен для установки на территории автостоянок и проезжей части городских парков.</p>
+            </div>
+            <div class="info-item">
+                <h3>03</h3>
+                <p>Тяжелый люк Т (С250) имеет высокий класс нагрузки, что позволяет использовать их на городских автомобильных дорогах с интенсивным движением и других территориях с повышенной нагрузкой.</p>
+            </div>
+            <div class="info-item">
+                <h3>04</h3>
+                <p>Люк для телефонных компаний. В люке данного типа разработана вторая крышка с уникальным запорным устройством и индивидуальным ключом. Конструкция имеет значительно увеличенную прочность.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-</div>
+<!-- Подвал -->
+
+
 {% endblock %}
