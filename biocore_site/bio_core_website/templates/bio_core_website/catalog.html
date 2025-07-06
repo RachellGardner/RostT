@@ -1,3 +1,5 @@
+{% load static %}  <!-- Добавьте эту строку в начале, если еще нет -->
+
 {% for category in categories %}
 <section class="category-section mb-5 p-4 bg-light rounded">
     <div class="d-flex justify-content-between align-items-center mb-4">
@@ -22,7 +24,7 @@
                 {% if element.image %}
                 <img src="{{ element.image.url }}" class="card-img-top" alt="{{ element.name }}" style="height: 180px; object-fit: cover;">
                 {% else %}
-                <img src="{% static 'bio_core_website/images/placeholder.jpg' %}" class="card-img-top" alt="Нет изображения" style="height: 180px; object-fit: cover;">
+                <img src="{% static 'bio_core_website/img/placeholder.jpg' %}" class="card-img-top" alt="Нет изображения" style="height: 180px; object-fit: cover;">
                 {% endif %}
                 
                 <div class="card-body">
